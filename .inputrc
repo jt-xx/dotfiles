@@ -1,0 +1,84 @@
+# allow caractères accentués
+# set meta-flag on # synonym for input-meta on
+set convert-meta off
+set input-meta on
+set output-meta on
+
+# clear a line.
+Control-u: kill-whole-line
+
+# completion options
+set show-all-if-ambiguous on
+set visible-stats on
+
+set bell-style none
+#set bell-style audible
+#set bell-style visible
+
+#   # Console:
+#   #   F1 - F5
+   "\e[[A": "'F2 info\nF3 gvim\nF7 configure\nF8 make\nF9 make install' 2>/dev/null\C-M"
+#   "\M-[[B": "info "
+#   "\M-[[C": "gvim "
+#   "\M-[[D": "explorer ~\C-M"
+#   "\M-[[E": "explorer 'c:/Progra~1/Edition/vim'\C-M"
+#
+#   # RXVT:
+#   #   F1 - F5
+   "\e[11~": "'F2 info  F3 gvim  F7 configure  F8 make  F9 make install' 2>/dev/null\C-M"
+   "\e[12~": "info "
+   "\e[13~": "gvim "
+   "\e[14~": "explorer ~\C-M"
+   "\e[15~": "explorer 'c:/Progra~1/Edition/vim'\C-M"
+#
+#   # Both console and RXVT:
+#   #   F6 - F12
+#   #"\M-[17~": "echo 'F1 info\nF2 gvim'\C-M"
+#   "\M-[18~": "./configure "
+#   "\M-[19~": "make "
+#   "\M-[20~": "make install"
+#   #"\M-[21~": "fg %10\C-M"
+#   #"\M-[23~": "fg %11\C-M"
+#   #"\M-[24~": "fg %-\C-M"
+#
+#   # Console:
+#   "\M-[1~":   beginning-of-line       # Home
+#   "\M-[4~":   end-of-line     #
+#
+#   # RXVT:
+#   "\M-[7~":   beginning-of-line       # Home
+#   "\M-[8~":   end-of-line     #
+#
+#   # Both console and RXVT
+#       "\M-[2~":       paste-from-clipboard    # Insert
+#   #   "\M-[5~"
+#       "\M-[3~":       delete-char             # delete
+#   #   "\M-[6~"
+#   #   Control-h: backward-delete-char         # Backspace is OK by default
+
+# Esc + Delete & Esc + Backspace
+"\ek": kill-whole-line
+"\eOw": end-of-line
+"\e[1~": beginning-of-line
+"\e[3~": delete-char
+"\e[4~": end-of-line
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+"\e[7~": beginning-of-line
+"\e[8~": end-of-line
+"\e[A": previous-history
+"\e[B": next-history
+"\e[H": beginning-of-line
+"\e\C-h": backward-kill-word
+"\e\e[3~": kill-word
+
+## for win32 irb
+#"\M-[": "["
+#"\M-]": "]"
+#"\M-{": "{"
+#"\M-}": "}"
+#"\M-\\": "\\"
+#"\M-|": "|"
+#"\M-@": "@"
+#"\M-~": "~"
+
