@@ -1,0 +1,9 @@
+[user]
+	name = Julien Thewys
+	email = jt@udev.org
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+    st = status
