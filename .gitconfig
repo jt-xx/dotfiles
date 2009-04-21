@@ -6,4 +6,6 @@
 	status = auto
 	branch = auto
 [alias]
+    ci = commit
+    di = diff
     st = status
