@@ -1,4 +1,5 @@
 # vim: set syn=sh
+VIMRUNTIME=/usr/share/vim/vimcurrent
 
 # enable color support of ls and also add handy aliases
 #[ -f ~/.dir_colors ] && eval `dircolors -b ~/.dir_colors `
