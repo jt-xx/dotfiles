@@ -50,7 +50,7 @@ if has("autocmd")
 endif " has("autocmd")
 " }}} ------------------------------------------------------------------------
 set expandtab tabstop=4 shiftwidth=4     " expand tabs
-set list listchars=tab:»·,trail:·        " enable display of tabs and trailing white spaces: 	
+set nolist listchars=tab:»·,trail:·      " disable display of tabs and trailing white spaces: 	
 set backspace=indent,eol,start           " allow backspacing over everything in insert mode
 set whichwrap+=<,>,[,]                   " allow arrow keys to move cursor in visual and insert mode
 set textwidth=132                        " default text width
@@ -96,7 +96,8 @@ behave xterm
 colors koehler
 " }}} ------------------------------------------------------------------------
 " Colors {{{
-set background=dark                      " enable vivid colors for dark background terminal
+"set background=dark                      " enable vivid colors for dark background terminal
+set background=light                     " enable dark colors for bright background terminal
 hi SpecialKey ctermfg=blue ctermbg=black guifg=darkgray guibg=black
 hi Folded ctermfg=cyan ctermbg=blue
 " }}} ------------------------------------------------------------------------
