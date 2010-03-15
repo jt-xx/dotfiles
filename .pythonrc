@@ -1,1 +1,14 @@
-from math import *
+# vim: set syn=python:
+import math
+
+# needed for tab completion
+import rlcompleter
+
+# enables tab completion in pdb session
+import pdb
+pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
+
+# enable tab completion in normal session
+import readline
+readline.parse_and_bind('tab: complete')
+
