@@ -9,3 +9,5 @@
     ci = commit
     di = diff
     st = status
+[push]
+	default = matching
