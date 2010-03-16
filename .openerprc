@@ -1,0 +1,52 @@
+[printer]
+path = None
+softpath_html = None
+preview = True
+softpath = None
+
+[logging]
+output = stdout
+level = error
+
+[help]
+index = http://doc.openerp.com/
+context = http://doc.openerp.com/index.php?model=%(model)s&lang=%(lang)s
+
+[form]
+submenu = True
+autosave = False
+toolbar = True
+
+[support]
+recipient = support@openerp.com
+support_id = 
+
+[tip]
+position = 0
+autostart = False
+
+[client]
+lang = en_US
+form_text_spellcheck = True
+default_path = /home/julien
+filetype = {}
+theme = None
+toolbar = both
+timeout = 300
+form_tab_orientation = 0
+form_tab = top
+
+[survey]
+position = 3
+
+[path]
+pixmaps = /usr/share/pixmaps/openerp-client
+share = /usr/share/openerp-client
+
+[login]
+db = tiny_belgium
+login = jth
+protocol = socket://
+port = 8070
+server = tiny.my.odoo.com
+
