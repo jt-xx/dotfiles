@@ -9,19 +9,20 @@ dpkg --set-selections
 apt-get -u dselect-upgrade + configure (dialogs, .rc,...)
 update source list with ppa,...
     sudo add-apt-repository ppa:chromium-daily
-install + configure (server key,...)
+    install + configure (server key,...)
 list /opt + /usr/local + ~/bin + ~/local (AdobeAir, Balsamiq, Xmind,...)
-install + configure (software key,...)
+    install + configure (software key,...)
 
 rsync home, DB,...
     stop services, close files (.swp)
     copy relevant .ssh parts
     configure mail
     copy pidgin config + log (got problems (? fs cache))
-    config printer for Tiny printer
+    config printer for Tiny printer + A4 format
     config xsane for Tiny scanner
         brscan2...deb
     rsync .eclipse, prune old dir, update (cannot create workspace if .eclipse synced from old one)
+    config openoffice: A4 + french dict (http://extensions.services.openoffice.org/en/project/french-dictionary-classic-reform1990)
 
 Xmind: http://www.xmind.net/downloads/
 Eclipse:

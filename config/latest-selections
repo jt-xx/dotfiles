@@ -1211,6 +1211,8 @@ openoffice.org-hyphenation			install
 openoffice.org-hyphenation-en-us		install
 openoffice.org-impress				install
 openoffice.org-java-common			install
+openoffice.org-l10n-common			install
+openoffice.org-l10n-fr				install
 openoffice.org-math				install
 openoffice.org-officebean			install
 openoffice.org-report-builder-bin		install
