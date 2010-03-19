@@ -91,9 +91,9 @@ runtime! macros/matchit.vim
 set mouse=a
 "(windows only) au GUIEnter * simalt ~x " start vim with maximized window
 "set guifont="Fixed:pixelsize=20:width=semicondensed"
-set guifont=Bitstream_Vera_Sans_Mono_Bold:h10:cANSI
+"set guifont=Bitstream_Vera_Sans_Mono_Bold:h10:cANSI
 behave xterm
-colors koehler
+colors default
 " }}} ------------------------------------------------------------------------
 " Colors {{{
 "set background=dark                      " enable vivid colors for dark background terminal
