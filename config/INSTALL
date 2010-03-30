@@ -3,6 +3,7 @@ download unetbootin
 build usb key (unetbootin, ubuntu iso)
 install + configure (partitioning,...)
     sound: http://www.madox.net/blog/projects/hp-probook-5310m-ubuntu-reference/
+    mic: alsamixer, capture, F4 -> set to Front Microphone
 apt-get install vim mc git
 git clone config + install
 dpkg --set-selections
