@@ -23,6 +23,7 @@ alias mv='mv -i'
 alias rm='rm -i'
 alias v=$VIMRUNTIME/macros/less.sh
 alias psg='ps aux | grep'
+alias go='gnome-open'
 
 # some more ls aliases
 #alias ll='ls -l'
