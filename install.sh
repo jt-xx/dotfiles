@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CONFIG_DIR="config"
+
 CP=/bin/cp
 GIT=/usr/bin/git
 
@@ -11,17 +13,19 @@ fi
 echo "Copying all config files to $HOME"
 case $1 in
     -f)
-        CP_ARGS="-af"
+        CP_ARGS="-afv"
     ;;
     *)
-        CP_ARGS="-aiu"
+        CP_ARGS="-aiuv"
     ;;
 esac
 for file in .[^.]*; do
     $CP $CP_ARGS $file $HOME
 done
 for file in *; do
-    $CP $CP_ARGS $file $HOME
+    if [ $file != ${CONFIG_DIR} ]; then
+        $CP $CP_ARGS $file $HOME
+    fi
 done
 
 USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
