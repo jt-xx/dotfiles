@@ -13,6 +13,8 @@ update source list with ppa,...
     install + configure (server key,...)
 list /opt + /usr/local + ~/bin + ~/local (AdobeAir, Balsamiq, Xmind,...)
     install + configure (software key,...)
+network
+    http://ubuntuforums.org/showthread.php?t=1344880
 
 rsync home, DB,...
     stop services, close files (.swp)
