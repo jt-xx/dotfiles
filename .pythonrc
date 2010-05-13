@@ -12,3 +12,8 @@ pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
 import readline
 readline.parse_and_bind('tab: complete')
 
+# often used libs
+import sys
+import os
+import re
+import yaml
