@@ -53,7 +53,7 @@ set expandtab tabstop=4 shiftwidth=4     " expand tabs
 set nolist listchars=tab:»·,trail:·      " disable display of tabs and trailing white spaces: 	
 set backspace=indent,eol,start           " allow backspacing over everything in insert mode
 set whichwrap+=<,>,[,]                   " allow arrow keys to move cursor in visual and insert mode
-set textwidth=132                        " default text width
+set textwidth=999                        " default text width
 set autoindent                           " always autoindent
 set nobackup                             " do not keep a backup file, use versions instead
 set noerrorbells vb t_vb=                " no beep, no visual bell
