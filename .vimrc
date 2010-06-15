@@ -31,7 +31,11 @@ if has("autocmd")
     " au BufRead,BufWrite,BufNewFile,FileReadPost *.xml,*.xsl set et
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g'\"" | endif
     au BufRead,BufNewFile *.txt set et " tw=78
-    au BufRead,BufNewFile *.xml,*.xsl set foldmethod=syntax foldcolumn=3 foldnestmax=2 foldlevel=2
+
+    let g:xml_syntax_folding = 1
+    au FileType xml setlocal foldmethod=syntax foldcolumn=3 foldnestmax=3 foldlevel=2
+    "au BufRead,BufNewFile *.xml,*.xsl set foldmethod=syntax foldcolumn=3 foldnestmax=2 foldlevel=2
+
     au BufRead,BufNewFile *.php,*.php3 set foldmethod=syntax foldcolumn=3 foldnestmax=2 foldlevel=2
     " au BufRead,BufNewFile *.py set foldmethod=indent foldcolumn=0 foldnestmax=2 foldlevel=2
     au BufRead,BufNewFile *.py set foldmethod=expr foldexpr=GetPythonFold(v:lnum) foldcolumn=3 foldnestmax=2 foldlevel=2
@@ -171,7 +175,7 @@ if (version >= 600) && has("autocmd") && has("folding")
     augroup folding
         au!
         au FileType * runtime fold/<amatch>-fold.vim
-        au FileType * if &foldmethod != 'manual' | set foldcolumn=1 | else | set foldcolumn=0 | endif
+        au FileType * if &foldmethod != 'manual' | set foldcolumn=3 | else | set foldcolumn=0 | endif
     augroup END
 endif
 " }}} ------------------------------------------------------------------------
