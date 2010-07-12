@@ -25,6 +25,7 @@ alias v=$VIMRUNTIME/macros/less.sh
 alias psg='ps aux | grep'
 alias go='gnome-open'
 alias g='ack-grep'
+alias now='date +%Y%m%dT%H%M%S'
 
 # some more ls aliases
 #alias ll='ls -l'
