@@ -53,10 +53,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-export USER_COLOR=`expr $RANDOM % 8 + 1`
-export PWD_COLOR=`expr $RANDOM % 8 + 1`
-export BRANCH_COLOR=`expr $RANDOM % 8 + 1`
-export NUM_COLOR=`expr $RANDOM % 8 + 1`
+#export USER_COLOR=`expr $RANDOM % 8 + 1`
+#export PWD_COLOR=`expr $RANDOM % 8 + 1`
+#export BRANCH_COLOR=`expr $RANDOM % 8 + 1`
+#export NUM_COLOR=`expr $RANDOM % 8 + 1`
+export USER_COLOR=`expr $RANDOM % 7 + 0`
+export PWD_COLOR=`expr $RANDOM % 7 + 0`
+export BRANCH_COLOR=`expr $RANDOM % 7 + 0`
+export NUM_COLOR=`expr $RANDOM % 7 + 0`
 
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
