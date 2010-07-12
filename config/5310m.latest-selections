@@ -1,4 +1,4 @@
-# 5310m 20100603T001800
+# 5310m 20100712T093750
 ack-grep					install
 acpi						install
 acpi-support					install
@@ -559,12 +559,9 @@ libcwidget3					install
 libdaemon0					install
 libdatrie1					install
 libdb-je-java					install
-libdb4.6					install
 libdb4.6-java-gcj				deinstall
 libdb4.7					install
 libdb4.8					install
-libdbd-mysql-perl				install
-libdbi-perl					install
 libdbus-1-3					install
 libdbus-glib-1-2				install
 libdbusmenu-glib0				deinstall
@@ -789,7 +786,6 @@ libhsqldb-java					install
 libhtml-format-perl				install
 libhtml-parser-perl				install
 libhtml-tagset-perl				install
-libhtml-template-perl				install
 libhtml-tree-perl				install
 libhunspell-1.2-0				install
 libhyphen0					install
@@ -923,7 +919,6 @@ libncursesw5					install
 libndesk-dbus-glib1.0-cil			install
 libndesk-dbus1.0-cil				install
 libneon27-gnutls				install
-libnet-daemon-perl				install
 libnet-dbus-perl				install
 libnet-dns-perl					install
 libnet-ip-perl					install
@@ -979,7 +974,6 @@ libpisock9					install
 libpisync1					install
 libpixman-1-0					install
 libplist1					install
-libplrpc-perl					install
 libplymouth2					install
 libpng12-0					install
 libpolkit-agent-1-0				install
@@ -1226,13 +1220,14 @@ light-themes					install
 lightsoff					install
 linux-firmware					install
 linux-generic					install
-linux-headers-2.6.32-22				install
-linux-headers-2.6.32-22-generic			install
+linux-headers-2.6.32-23				install
+linux-headers-2.6.32-23-generic			install
 linux-headers-generic				install
 linux-image-2.6.31-14-generic			deinstall
 linux-image-2.6.31-20-generic			deinstall
 linux-image-2.6.31-21-generic			install
 linux-image-2.6.32-22-generic			install
+linux-image-2.6.32-23-generic			install
 linux-image-generic				install
 linux-libc-dev					install
 linux-sound-base				install
@@ -1444,6 +1439,7 @@ python-cherrypy3				install
 python-compizconfig				install
 python-configglue				install
 python-configobj				install
+python-contract					install
 python-couchdb					install
 python-crypto					install
 python-cups					install
@@ -1527,6 +1523,7 @@ python-pydot					install
 python-pygame					install
 python-pygments					install
 python-pygoocanvas				install
+python-pygraphviz				install
 python-pyinotify				install
 python-pyorbit					install
 python-pyparsing				install
