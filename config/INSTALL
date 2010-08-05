@@ -32,3 +32,18 @@ Eclipse:
     perl -pi.bak -e 's/home\/knu/home\/julien/g' $(fgrep -rl "home/knu" *)
     perl -pi.bak -e 's/home_knu/home_julien/g' $(fgrep -rl "home_knu" *)
 Balsamiq: http://www.balsamiq.com/products/mockups/desktop
+
+more config:
+    CTRL-PageUp CTRL-PageDown in gnome-terminal / terminator (5~)
+    french keyboard always respawning
+    condensed font
+    thunderbird not displaying all folders created from evolution
+
+ sudo su - postgres
+ createuser --createdb --username postgres --no-createrole --pwprompt julien
+ Shall the new role be a superuser? (y/n) y
+
+virtualbox:
+  sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian lucid non-free"
+  wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
+  sudo apt-get update && sudo apt-get install virtualbox-3.2
