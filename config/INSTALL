@@ -2,6 +2,11 @@ download ubuntu iso
 download unetbootin
 build usb key (unetbootin, ubuntu iso)
 install + configure (partitioning,...)
+swap: https://help.ubuntu.com/community/SwapFaq
+    sudo dd if=/dev/zero of=/mnt/delete_me bs=1M count=4096
+    sudo dd if=/dev/zero of=/mnt/4096MB.swap bs=1M count=4096
+    sudo rm /mnt/delete_me (paranoid fragmentation avoidance)
+config:
     sound: http://www.madox.net/blog/projects/hp-probook-5310m-ubuntu-reference/
     mic: alsamixer, capture, F4 -> set to Front Microphone
 apt-get install vim mc git
