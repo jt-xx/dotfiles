@@ -1,0 +1,34 @@
+on the source computer:
+sudo tar cvpf $1 \
+    --exclude=/dev \
+    --exclude=/proc \
+    --exclude=/lost+found \
+    --exclude=/media \
+    --exclude=/mnt \
+    --exclude=/sys \
+    --exclude=/home/openerp \
+    --exclude=/home/julien/.gvfs \
+    --exclude=/home/julien/.VirtualBox \
+    /
+    # make sure $1 (target file backup) is in the excluded part
+    # exclude your swap file if you wish
+
+meanwhile, on the target computer:
+get usb flash drive with ubuntu live
+boot it and partition at will
+wait for source backup to finish...
+sudo tar xvpf $1 -C /
+sudo mkdir /mnt/root
+sudo mount /dev/sda2 /mnt/root
+sudo mount --bind /dev /mnt/root/dev
+sudo chroot /mnt/root /bin/bash
+grub-mkconfig > /boot/grub/grub.cfg
+grub-install /dev/sda
+make swap file if you didn't tarred it (check it is same as in /etc/fstab)
+
+reboot
+
+finish configuration for new hardware (and this might be the longest part)
+
+replicate excluded big files (.VirtualBox, ...)
+
