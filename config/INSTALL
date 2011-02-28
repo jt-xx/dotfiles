@@ -52,3 +52,8 @@ virtualbox:
   sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian lucid non-free"
   wget -q http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc -O- | sudo apt-key add -
   sudo apt-get update && sudo apt-get install virtualbox-3.2
+
+thunderbird latest stable:
+  http://www.ubuntuupdates.org/ppa/ubuntuzilla?dist=all :
+  sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com C1289A29
+  echo -e "\ndeb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main" | sudo tee -a /etc/apt/sources.list > /dev/null 
