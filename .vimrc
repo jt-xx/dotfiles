@@ -69,6 +69,7 @@ set hlsearch                             " highlight search
 set joinspaces                           " insert two spaces after period wen joining lines
 set report=0                             " show any changes
 set viminfo='200,\"5000 history=500      " what info to store from an editing session
+set number                               " show lines number in margin
 
 " screen dependent
 if $TERM == "screen"                     " ! $TERM could be overwritten in .screenrc !
@@ -104,6 +105,7 @@ colors default
 set background=light                     " enable dark colors for bright background terminal
 hi SpecialKey ctermfg=blue ctermbg=black guifg=darkgray guibg=black
 hi Folded ctermfg=cyan ctermbg=blue
+hi SpellBad ctermfg=red ctermbg=white gui=undercurl
 " }}} ------------------------------------------------------------------------
 " Vtreeexplorer {{{
 let treeExplVertical = 1
