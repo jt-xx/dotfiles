@@ -17,4 +17,15 @@ import sys
 import os
 import datetime
 import re
-import yaml
+import decimal
+import random
+try:
+    import yaml
+except ImportError, e:
+    pass
+
+# shortcuts
+D = decimal.Decimal
+now = datetime.datetime.now()
+today = datetime.date.today()
+
