@@ -7,9 +7,9 @@
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # ... or force ignoredups and ignorespace
-export HISTCONTROL=ignoreboth
+#export HISTCONTROL=ignoreboth
 
 # Ignore some controlling instructions
 export HISTIGNORE="[ ]*:&:bg:fg:exit"
@@ -18,7 +18,7 @@ export HISTIGNORE="[ ]*:&:bg:fg:exit"
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=2000
+export HISTSIZE=3000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -118,4 +118,9 @@ esac
 #}
 
 export PYTHONSTARTUP=~/.pythonrc
+
+export LC_TIME=en_DK.utf8 # uses iso date format
+
+PATH=${PATH}:~/bin
+[ -f /opt/play-1.2.3/support/play_completion ] && . /opt/play-1.2.3/support/play_completion
 
