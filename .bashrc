@@ -119,6 +119,8 @@ esac
 
 export PYTHONSTARTUP=~/.pythonrc
 
+alias mc='command mc -c --printwd=/tmp/mc-$USER/dir; cd "`cat /tmp/mc-$USER/dir`"; rm -f "/tmp/mc-$USER/dir"; :'
+
 export LC_TIME=en_DK.utf8 # uses iso date format
 
 PATH=${PATH}:~/bin

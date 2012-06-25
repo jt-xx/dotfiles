@@ -19,11 +19,11 @@
 # msgminwait            3               # default: 1
   silencewait           15              # default: 30
 # CREATE windows
-  screen -t root 0
+#  screen -t root 0
 #  screen -t mc 9 mc
-  screen 1
-  screen 2
-  screen 3
+#  screen 1
+#  screen 2
+#  screen 3
 # COLOR:  colors codes are combinations of
 # [attribute modifier] [color description]
 # the manual talks of "attribute/color modifiers".

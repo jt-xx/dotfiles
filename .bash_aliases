@@ -25,10 +25,11 @@ alias rm='rm -i'
 alias v=$VIMRUNTIME/macros/less.sh
 alias psg='ps aux | grep'
 alias go='gnome-open'
-alias g='ack-grep --nocolor --nogroup --column'
+alias g='ack-grep --nogroup --column'
 alias now='date +%Y%m%dT%H%M%S'
 alias bd='bzr diff|v'
 alias s='du -s * | sort -n'
+alias csv='column -s "," -t < '
 
 # some more ls aliases
 #alias ll='ls -l'
