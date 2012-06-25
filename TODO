@@ -1,0 +1,4 @@
+add .config/terminatorconfig
+add .ssh/config
+
+enhance install/diff script
