@@ -134,3 +134,4 @@ export LC_TIME=en_DK.utf8 # uses iso date format
 PATH=${PATH}:~/bin
 [ -f /opt/play-1.2.3/support/play_completion ] && . /opt/play-1.2.3/support/play_completion
 
+export PSQL_EDITOR='vim -c "set ft=sql"'
