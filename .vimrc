@@ -101,8 +101,8 @@ behave xterm
 colors default
 " }}} ------------------------------------------------------------------------
 " Colors {{{
-"set background=dark                      " enable vivid colors for dark background terminal
-set background=light                     " enable dark colors for bright background terminal
+set background=dark                      " enable vivid colors for dark background terminal
+"set background=light                     " enable dark colors for bright background terminal
 hi SpecialKey ctermfg=blue ctermbg=black guifg=darkgray guibg=black
 hi Folded ctermfg=cyan ctermbg=blue
 hi SpellBad ctermfg=red ctermbg=white gui=undercurl
