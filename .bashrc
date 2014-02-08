@@ -135,3 +135,5 @@ PATH=${PATH}:~/bin
 [ -f /opt/play-1.2.3/support/play_completion ] && . /opt/play-1.2.3/support/play_completion
 
 export PSQL_EDITOR='vim -c "set ft=sql"'
+#export http_proxy="http://thewyju:***REMOVED***@147.67.138.13:8012"
+#export http_proxy="http://Jacques-Etienne Baud:***REMOVED***@156.109.196.69"
