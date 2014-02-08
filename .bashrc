@@ -80,6 +80,14 @@ xterm*|rxvt*)
     ;;
 esac
 
+# Functions definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_functions, instead of adding them here directly.
+
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
