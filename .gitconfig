@@ -1,10 +1,13 @@
 [user]
-	name = Julien Thewys
-	email = julien.thewys@gmail.com
+    name = Julien Thewys
+    email = julien.thewys@gmail.com
+
+
 [color]
-	diff = auto
-	status = auto
-	branch = auto
+    diff = auto
+    status = auto
+    branch = auto
+
 [alias]
     ci = commit
     di = diff
@@ -12,4 +15,5 @@
     tip = log -1
     top = log -10 --format='%h: %an %ai %s'
 [push]
-	default = matching
+    default = matching
+
