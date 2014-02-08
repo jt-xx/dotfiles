@@ -1,4 +1,6 @@
 add .config/terminatorconfig
 add .ssh/config
 
+use pathogen for vim plugins
+
 enhance install/diff script
