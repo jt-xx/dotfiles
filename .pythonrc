@@ -1,5 +1,15 @@
-# vim: set syn=python:
+# vim: set syn=python ft=python:
+
+import sys
+import os
 import math
+import re
+import random
+try:
+    import yaml
+except ImportError:
+    print("%s: could not import yaml" % __file__)
+    pass
 
 # needed for tab completion
 import rlcompleter
@@ -12,20 +22,11 @@ pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
 import readline
 readline.parse_and_bind('tab: complete')
 
-# often used libs
-import sys
-import os
-import datetime
-import re
-import decimal
-import random
-try:
-    import yaml
-except ImportError, e:
-    pass
-
 # shortcuts
+import decimal
 D = decimal.Decimal
+
+import datetime
 now = datetime.datetime.now()
 today = datetime.date.today()
 
