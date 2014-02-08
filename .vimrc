@@ -181,5 +181,9 @@ if (version >= 600) && has("autocmd") && has("folding")
     augroup END
 endif
 " }}} ------------------------------------------------------------------------
+" Ack {{{
+" https://github.com/mileszs/ack.vim/
+let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+" }}} ------------------------------------------------------------------------
 
 " vim600: set fdm=marker:
