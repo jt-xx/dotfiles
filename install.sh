@@ -1,38 +1,47 @@
 #!/bin/bash
 
-CONFIG_DIR="config"
+# Creates symlinks in parent directory to all specified files in current directory.
+#   If a file with same name already exists in parent directory, it will be moved to "DOTFILES_COW_DIR".
+#   If a symlink with same name already exists, it will be kept as it is.
+#   TODO manage .ssh/config
+# Also, the script will suggest a name and an email for your .gitconfig.
 
-CP=/bin/cp
+NOW=$(date +%Y%m%dT%H%M%S)
+DOTFILES_DIR=$(basename $PWD)
+DOTFILES_COW_DIR="dotfiles_${NOW}"
+
+MV=/bin/mv
+LN=/bin/ln
 GIT=/usr/bin/git
 
-if [ $(pwd) == $HOME ]; then
-    echo "Already in \$HOME, nothing to do."
-    exit 0
-fi
+FILES=".ackrc .bash_aliases .bash_functions .bash_logout .bashrc .bazaar .gitconfig .inputrc
+    .profile .psqlrc .pythonrc .screenrc .sqliterc .vim .vimrc"
 
-echo "Copying all config files to $HOME"
-case $1 in
-    -f)
-        CP_ARGS="-afv"
-    ;;
-    *)
-        CP_ARGS="-aiuv"
-    ;;
-esac
-for file in .[^.]*; do
-    $CP $CP_ARGS $file $HOME
-done
-for file in *; do
-    if [ $file != ${CONFIG_DIR} ]; then
-        $CP $CP_ARGS $file $HOME
+for file in $FILES; do
+    src="$DOTFILES_DIR/$file"
+    target="../$file"
+
+    if [ -e "$target" -a ! -L "$target" ]; then
+        #echo "$target already exists, moving in ${DOTFILES_COW_DIR}"
+        mkdir -p $DOTFILES_COW_DIR
+        $MV -fv "$target" $DOTFILES_COW_DIR
     fi
-done
 
-USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
-echo "Changing your global .gitconfig user.name to $USERNAME"
-$GIT config --global user.name $USERNAME
+    if [ -L "$target" ]; then
+        echo "$target is a already a symlink, skipping"
+    else
+        #echo "linking $target to $src"
+        $LN -sfv $src $target
+    fi
+done;
 
-read -p "Type your email to put in .gitconfig: " USERMAIL
-echo "Changing your global .gitconfig user.email to $USERMAIL"
-$GIT config --global user.email $USERMAIL
+function config_git {
+    USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
+    echo "Changing your global .gitconfig user.name to $USERNAME"
+    $GIT config --global user.name $USERNAME
+
+    read -p "Type your email to put in .gitconfig: " USERMAIL
+    echo "Changing your global .gitconfig user.email to $USERMAIL"
+    $GIT config --global user.email $USERMAIL
+}
 
