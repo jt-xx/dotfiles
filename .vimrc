@@ -106,6 +106,7 @@ set background=dark                      " enable vivid colors for dark backgrou
 hi SpecialKey ctermfg=blue ctermbg=black guifg=darkgray guibg=black
 hi Folded ctermfg=cyan ctermbg=blue
 hi SpellBad ctermfg=red ctermbg=white gui=undercurl
+hi LineNr ctermfg=darkgrey
 " }}} ------------------------------------------------------------------------
 " Vtreeexplorer {{{
 let treeExplVertical = 1
