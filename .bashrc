@@ -104,7 +104,9 @@ case $- in
 *i*)
     if [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
-    fi ;;
+    elif [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi;;
 esac
 
 # Whenever displaying the prompt, write the previous line to disk
