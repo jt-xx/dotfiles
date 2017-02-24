@@ -142,3 +142,13 @@ export EDITOR='vim'
 export PSQL_EDITOR='vim -c "set ft=sql"'
 #export http_proxy="http://thewyju:***REMOVED***@147.67.138.13:8012"
 #export http_proxy="http://Jacques-Etienne Baud:***REMOVED***@156.109.196.69"
+
+# docker
+#eval $(docker-machine env dockerbox)
+#alias doco='docker-compose'
+#alias docu='docker-compose up -d'
+#alias docl='docker-compose logs'
+#alias docsh='docker-compose run --rm odoo ./src/odoo.py shell'
+#export ODOO_URL=$(docker-machine ip dockerbox)":"$(docker-compose port odoo 8069 | cut -f 2 -d ':')
+##alias bro='chromium-browser --incognito ${ODOO_URL}'
+#alias bro='open "/Applications/Google Chrome.app" -n --args --incognito ${ODOO_URL}'
