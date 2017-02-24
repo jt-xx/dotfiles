@@ -138,6 +138,7 @@ export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
 PATH="/usr/local/sbin:${PATH}:~/bin"
 PATH="/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
+export EDITOR='vim'
 export PSQL_EDITOR='vim -c "set ft=sql"'
 #export http_proxy="http://thewyju:***REMOVED***@147.67.138.13:8012"
 #export http_proxy="http://Jacques-Etienne Baud:***REMOVED***@156.109.196.69"
