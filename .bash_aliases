@@ -3,7 +3,8 @@ VIMRUNTIME=/usr/share/vim/vimcurrent
 
 # enable color support of ls and also add handy aliases
 #[ -f ~/.dir_colors ] && eval `dircolors -b ~/.dir_colors `
-if [ -x /usr/bin/dircolors ]; then
+#if [ -x /usr/bin/dircolors ]; then
+if [ -x $(which dircolors) ]; then
     eval "`dircolors -b`"
     #if gnu ls
     alias ls='ls --color=auto'
@@ -11,11 +12,15 @@ if [ -x /usr/bin/dircolors ]; then
     #if bsd ls
     #alias ls='ls -G'
     #alias l='ls -AFGlv'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+elif [[ $(uname) == 'Darwin' ]]; then
+    export LSCOLORS='Exfxcxdxbxegedabagacad'
+    echo $LSCOLORS
+    alias l=' ls -alG'
 fi
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 alias u='cd ..'
 alias cp='cp -i'
