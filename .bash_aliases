@@ -31,7 +31,7 @@ alias v=$VIMRUNTIME/macros/less.sh
 alias psg='ps aux | grep'
 alias go='gnome-open'
 alias f='find . -iname'
-alias g='ack-grep --nogroup --column'
+alias g='ack --nogroup --column --ignore-dir=i18n'
 alias now='date +%Y%m%dT%H%M%S'
 alias bd='bzr diff|v'
 alias s='du -s * | sort -n'
