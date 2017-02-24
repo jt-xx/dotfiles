@@ -132,6 +132,8 @@ export PYTHONSTARTUP=~/.pythonrc
 alias mc='command mc -c --printwd=/tmp/mc-$USER/dir; cd "`cat /tmp/mc-$USER/dir`"; rm -f "/tmp/mc-$USER/dir"; :'
 
 export LC_TIME=en_DK.utf8 # uses iso date format
+export LC_CTYPE=en_US.UTF-8 # fix perl warning on OSX
+export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
 
 PATH=${PATH}:~/bin
 [ -f /opt/play-1.2.3/support/play_completion ] && . /opt/play-1.2.3/support/play_completion
