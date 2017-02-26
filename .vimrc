@@ -161,6 +161,7 @@ endif
 map Q gqq
 nnoremap <silent> <F2> :bp!<CR>
 nnoremap <silent> <F3> :bn!<CR>
+nnoremap <silent> <F4> :set wrap!<CR>
 nnoremap <silent> <F5> zm
 nnoremap <silent> <F6> zr
 nnoremap <silent> <F7> :set fdm=syntax<CR>
