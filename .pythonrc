@@ -20,7 +20,10 @@ pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
 
 # enable tab completion in normal session
 import readline
-readline.parse_and_bind('tab: complete')
+if 'libedit' in readline.__doc__: # osx
+    readline.parse_and_bind("bind ^I rl_complete")
+else:
+    readline.parse_and_bind("tab: complete")
 
 # shortcuts
 import decimal
