@@ -34,3 +34,5 @@
 #	gitproxy = gitproxy.sh
 [url "https://github.com/"]
     insteadOf = git://github.com/
+[core]
+	pager = less -x1,5
