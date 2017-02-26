@@ -143,6 +143,14 @@ export PSQL_EDITOR='vim -c "set ft=sql"'
 #export http_proxy="http://thewyju:***REMOVED***@147.67.138.13:8012"
 #export http_proxy="http://Jacques-Etienne Baud:***REMOVED***@156.109.196.69"
 
+# fasd
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
+
 # docker
 #eval $(docker-machine env dockerbox)
 #alias doco='docker-compose'
