@@ -70,6 +70,7 @@ set joinspaces                           " insert two spaces after period wen jo
 set report=0                             " show any changes
 set viminfo='200,\"5000 history=500      " what info to store from an editing session
 set number                               " show lines number in margin
+set directory=~/.vim/.swap_files//       " location for all swap files
 
 " screen dependent
 if $TERM == "screen"                     " ! $TERM could be overwritten in .screenrc !
