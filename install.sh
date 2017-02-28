@@ -11,7 +11,7 @@ DOTFILES_COW_DIR="dotfiles_${NOW}"
 
 MV=/bin/mv
 LN=/bin/ln
-GIT=/usr/bin/git
+GIT="/usr/bin/env git"
 
 FILES=".ackrc .bash_aliases .bash_functions .bash_logout .bashrc .bazaar .gitconfig .inputrc
     .profile .psqlrc .pythonrc .screenrc .sqliterc .ssh/config .vim .vimrc"
