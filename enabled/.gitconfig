@@ -26,7 +26,7 @@
     default = matching
 
 #[http]
-#   proxy = thewyju:***REMOVED***@147.67.138.13:8012
+#   proxy = thewyju:abcd1234@147.67.138.13:8012
 #	proxy = socks5://127.0.0.1:1080
 #[https]
 #	proxy = socks5://127.0.0.1:1080

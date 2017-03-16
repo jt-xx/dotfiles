@@ -143,7 +143,7 @@ fi
 
 export EDITOR='vim'
 export PSQL_EDITOR='vim -c "set ft=sql"'
-#export http_proxy="http://thewyju:***REMOVED***@147.67.138.13:8012"
+#export http_proxy="http://thewyju:abcd1234@147.67.138.13:8012"
 
 # fasd
 fasd_cache="$HOME/.fasd-init-bash"

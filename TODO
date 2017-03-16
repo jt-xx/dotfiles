@@ -1,5 +1,0 @@
-add .config/terminatorconfig
-
-use pathogen for vim plugins
-
-enhance install/diff script
