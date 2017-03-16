@@ -1,79 +1,98 @@
-# File: http://www.guckes.net/setup/screenrc
-# unsetenv DISPLAY
-# Uncomment one/some following lines to automatically let
-# screen -t MAIL        0 mutt
-  autodetach            on              # default: on
-  crlf                  off             # default: off
-  deflogin              off             # default: on
-# defsilence            off             # default: off
-  hardcopy_append       on              # default: off
-# nethack               on              # default: off
-  startup_message       off             # default: on
-  vbell                 off             # default: ???
-  shell /bin/bash
-#  term rxvt
-#  term xterm-color
-#  termcapinfo xterm-color|rxvt ti@:te@
-#  termcapinfo linux     "ve=\E[?25h\E[?17;0;64c"
-  defscrollback         1000            # default: 100
-# msgminwait            3               # default: 1
-  silencewait           15              # default: 30
-# CREATE windows
-#  screen -t root 0
-#  screen -t mc 9 mc
-#  screen 1
-#  screen 2
-#  screen 3
-# COLOR:  colors codes are combinations of
-# [attribute modifier] [color description]
-# the manual talks of "attribute/color modifiers".
-# see the manual, section "STRING ESCAPES".
-# Color table:
-# 0 Black             .    leave color unchanged
-# 1 Red               b    blue
-# 2 Green             c    cyan
-# 3 Brown / yellow    d    default color
-# 4 Blue              g    green           b    bold
-# 5 Purple            k    blacK           B    blinking
-# 6 Cyan              m    magenta         d    dim
-# 7 White             r    red             r    reverse
-# 8 unused/illegal    w    white           s    standout
-# 9 transparent       y    yellow          u    underline
-# note: "dim" is not mentioned in the manual.
-# ===========================================
-# CAPTION - shows a "caption" for the window.
-# ===========================================
-# a "caption" is another line which can show information -
-# in addition to the hardstatus line.
-# use caption to show window list:
-caption always "%{rk}%H %{yk}%Y-%m-%d %{gk}%c:%s  %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
-caption always "%{Rb}%H %{Yb}%Y-%m-%d %{Gb}%c  %{wk}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{wk}%?%+Lw%?"
-# caption always "%{kG}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kG}%?%+Lw%?"
-# caption always "%=%c:%s %Y-%m-%d"
-# ===============================================================
-# you can find their description in the manual in section
-# "STRING ESCAPES":
-#  %%      percent sign (the escape character itself)
-#  %a      either 'am' or 'pm' - according to the current time
-#  %A      either 'AM' or 'PM' - according to the current time
-#  %c      current time HH:MM in 24h format
-#  %C      current time HH:MM in 12h format
-#  %d      day number - number of current day
-#  %D      Day's name - the weekday name of the current day
-#  %f      flags of the window
-#  %F      sets %? to true if the window has the focus
-#  %h      hardstatus of the window
-#  %H      hostname of the system
-#  %l      current load of the system
-#  %m      month number
-#  %M      month name
-#  %n      window number
-#  %s      seconds
-#  %t      window title
-#  %u      all other users on this window
-#  %w      all window numbers and names.
-#  %-w     all window numbers up to the current window
-#  %+w     all window numbers after the current window
-#  %W      all window numbers and names except the current one
-#  %y      last two digits of the year number
-#  %Y      full year number
+# visual bell off
+vbell off
+
+# reload .screenrc CTRL-a Shift-r
+bind R eval "source $HOME/.screenrc" "echo '.screenrc reloaded!'"
+
+# no welcome message
+startup_message off
+
+# the following two lines give a two-line status, with the current window highlighted
+hardstatus alwayslastline
+hardstatus string "%-w%{Wb}[%n %t]%{-}%+w%{=wk} %=%H %{rw}load: %l"
+#hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %=%{g}][%{B}%m/%d %{W}%C%A%{g}]'
+#hardstatus string '[%{= KW}%-w%{+b yk} %n*%t%?(%u)%? %{-}%+w %{g}]'#%=%{rw}Load %H: %l%='
+
+# huge scrollback buffer
+defscrollback 5000
+
+# 256 colors
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce on
+
+# mouse tracking allows to switch region focus by clicking
+#mousetrack on
+
+# default shell
+shell "/usr/bin/fish"
+
+# default windows
+screen 0 fish
+#screen 1 fish
+#screen 2 fish
+#screen -t Python  3 python
+#screen 4 fish
+screen 9 vmstat 10
+#select 0
+#bind c screen 1 # window numbering starts at 1 not 0
+#bind 0 select 10
+
+# get rid of silly xoff stuff
+#bind s split
+
+# layouts
+#layout autosave on
+#layout new one
+#select 1
+#layout new two
+#select 1
+#split
+#resize -v +8
+#focus down
+#select 4
+#focus up
+#layout new three
+#select 1
+#split
+#resize -v +7
+#focus down
+#select 3
+#split -v
+#resize -h +10
+#focus right
+#select 4
+#focus up
+#
+#layout attach one
+#layout select one
+
+# navigating regions with Ctrl-arrows
+#bindkey "^[[1;5D" focus left
+#bindkey "^[[1;5C" focus right
+#bindkey "^[[1;5A" focus up
+#bindkey "^[[1;5B" focus down
+
+# switch windows with F3 (prev) and F4 (next)
+#bindkey "^[OR" prev
+#bindkey "^[OS" next
+
+# switch layouts with Ctrl+F3 (prev layout) and Ctrl+F4 (next)
+#bindkey "^[O1;5R" layout prev
+#bindkey "^[O1;5S" layout next
+
+# F2 puts Screen into resize mode. Resize regions using hjkl keys.
+#bindkey "^[OQ" eval "command -c rsz" # enter resize mode
+
+# use hjkl keys to resize regions
+#bind -c rsz h eval "resize -h -5" "command -c rsz"
+#bind -c rsz j eval "resize -v -5" "command -c rsz"
+#bind -c rsz k eval "resize -v +5" "command -c rsz"
+#bind -c rsz l eval "resize -h +5" "command -c rsz"
+
+# quickly switch between regions using tab and arrows
+#bind -c rsz \t    eval "focus"       "command -c rsz" # Tab
+#bind -c rsz -k kl eval "focus left"  "command -c rsz" # Left
+#bind -c rsz -k kr eval "focus right" "command -c rsz" # Right
+#bind -c rsz -k ku eval "focus up"    "command -c rsz" # Up
+#bind -c rsz -k kd eval "focus down"  "command -c rsz" # Down
