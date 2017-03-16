@@ -17,8 +17,15 @@ GIT="/usr/bin/env git"
 
 function install_to_parent_dir() {
     shopt -s dotglob
-    for file in enabled/*; do
+    src_dir=enabled/*
+    for dir in $(find $src_dir -type d); do
+        dir="$(echo $dir | cut -d '/' -f2-)"
+        target="../$dir"
+        $MKDIR -p $target
+    done;
+    for file in $(find $src_dir -type f); do
         src="$DOTFILES_DIR/$file"
+        file="$(echo $file | cut -d '/' -f2-)"
         target="../$file"
 
         if [ -e "$target" -a ! -L "$target" ]; then
@@ -38,20 +45,20 @@ function install_to_parent_dir() {
 }
 
 function _install_vim() {
+    # this only works for global ~/.vim runtimepath
     export GIT_SSL_NO_VERIFY=true
-    $MKDIR -p ../.vim/.swap_files
     src=https://raw.github.com/junegunn/vim-plug/master/plug.vim
     target=../.vim/autoload/plug.vim
     $MKDIR -p $(dirname $target)
     curl --insecure -fLo $target $src
-    vim +PlugInstall +qall
+    vim -u ../.vimrc +PlugInstall +qall
 }
 
 function git_config() {
     #USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
     USERNAME="Julien Thewys"
     echo "Changing your global .gitconfig user.name to $USERNAME"
-    $GIT config --global user.name $USERNAME
+    $GIT config --global user.name "$USERNAME"
 
     #read -p "Type your email to put in .gitconfig: " USERMAIL
     USERMAIL="julien.thewys@gmail.com"
