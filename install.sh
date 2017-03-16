@@ -1,9 +1,10 @@
 #!/bin/bash
 
-# Creates symlinks in parent directory to all specified files in current directory.
+# Creates symlinks in parent directory to all specified files in "enabled" directory.
 #   If a file with same name already exists in parent directory, it will be moved to "DOTFILES_COW_DIR".
 #   If a symlink with same name already exists, it will be kept as it is.
-# Also, the script will suggest a name and an email for your .gitconfig.
+#   Then proceeds with .vim and vim pluggins.
+# Also sets name and email for your .gitconfig.
 
 NOW=$(date +%Y%m%dT%H%M%S)
 DOTFILES_DIR=$(pwd -P)
@@ -11,34 +12,51 @@ DOTFILES_COW_DIR="dotfiles_${NOW}"
 
 MV=/bin/mv
 LN=/bin/ln
+MKDIR=/bin/mkdir
 GIT="/usr/bin/env git"
 
-FILES=".ackrc .bash_aliases .bash_functions .bash_logout .bashrc .bazaar .gitconfig .inputrc
-    .profile .psqlrc .pythonrc .screenrc .sqliterc .ssh/config .vim .vimrc"
+function install_to_parent_dir() {
+    shopt -s dotglob
+    for file in enabled/*; do
+        src="$DOTFILES_DIR/$file"
+        target="../$file"
 
-for file in $FILES; do
-    src="$DOTFILES_DIR/$file"
-    target="../$file"
+        if [ -e "$target" -a ! -L "$target" ]; then
+            $MKDIR -p "$DOTFILES_COW_DIR/$(dirname "$file")"
+            $MV -fv "$target" "$DOTFILES_COW_DIR/$file"
+        fi
 
-    if [ -e "$target" -a ! -L "$target" ]; then
-        mkdir -p "$DOTFILES_COW_DIR/$(dirname "$file")"
-        $MV -fv "$target" "$DOTFILES_COW_DIR/$file"
-    fi
+        if [ -L "$target" ]; then
+            echo "$target is already a symlink, skipping"
+        else
+            $MKDIR -p $(dirname $target)
+            $LN -sfv $src $target
+        fi
+    done;
+    git_config
+    _install_vim
+}
 
-    if [ -L "$target" ]; then
-        echo "$target is already a symlink, skipping"
-    else
-        $LN -sfv $src $target
-    fi
-done;
+function _install_vim() {
+    export GIT_SSL_NO_VERIFY=true
+    $MKDIR -p ../.vim/.swap_files
+    src=https://raw.github.com/junegunn/vim-plug/master/plug.vim
+    target=../.vim/autoload/plug.vim
+    $MKDIR -p $(dirname $target)
+    curl --insecure -fLo $target $src
+    vim +PlugInstall +qall
+}
 
-function config_git {
-    USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
+function git_config() {
+    #USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
+    USERNAME="Julien Thewys"
     echo "Changing your global .gitconfig user.name to $USERNAME"
     $GIT config --global user.name $USERNAME
 
-    read -p "Type your email to put in .gitconfig: " USERMAIL
+    #read -p "Type your email to put in .gitconfig: " USERMAIL
+    USERMAIL="julien.thewys@gmail.com"
     echo "Changing your global .gitconfig user.email to $USERMAIL"
     $GIT config --global user.email $USERMAIL
 }
 
+install_to_parent_dir
