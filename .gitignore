@@ -1,3 +1,6 @@
-*.swp
-*.pyc
+# vim
+*.sw[po]
 .netrwhist
+
+# python
+*.pyc
