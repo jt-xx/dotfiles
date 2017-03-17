@@ -40,21 +40,19 @@ function install_to_parent_dir() {
             $LN -sfv $src $target
         fi
     done;
-    git_config
-    _install_vim
 }
 
-function _install_vim() {
+function install_vim() {
     # this only works for global ~/.vim runtimepath
     export GIT_SSL_NO_VERIFY=true
     src=https://raw.github.com/junegunn/vim-plug/master/plug.vim
     target=../.vim/autoload/plug.vim
     $MKDIR -p $(dirname $target)
     curl --insecure -fLo $target $src
-    vim -u ../.vimrc +PlugInstall +qall
+    vim +PlugInstall +qall
 }
 
-function git_config() {
+function git_global_config() {
     #USERNAME=$(finger $USER | head -n1 | sed 's/.*Name: //')
     USERNAME="Julien Thewys"
     echo "Changing your global .gitconfig user.name to $USERNAME"
@@ -67,3 +65,5 @@ function git_config() {
 }
 
 install_to_parent_dir
+git_global_config
+install_global_vim
