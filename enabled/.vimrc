@@ -74,9 +74,10 @@ call plug#end()
 
 " Global config not plugin dependent {{{
 set modelines=1                        " macos workaround
-set nobackup
-set directory=~/.vim/tmp/swap_files//
-set viewdir=~/.vim/tmp/view//
+set backupdir=~/.vim/tmp/backups//
+set directory=~/.vim/tmp/swaps//
+set viewdir=~/.vim/tmp/views//
+set undodir=~/.vim/tmp/undo//
 set listchars=tab:»·,trail:·
 set background=dark
 set number
