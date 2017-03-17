@@ -42,7 +42,7 @@ function install_to_parent_dir() {
     done;
 }
 
-function install_vim() {
+function install_global_vim() {
     # this only works for global ~/.vim runtimepath
     export GIT_SSL_NO_VERIFY=true
     src=https://raw.github.com/junegunn/vim-plug/master/plug.vim
