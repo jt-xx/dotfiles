@@ -100,11 +100,10 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Filetype and autocommand {{{
 filetype plugin indent on
 
-autocmd BufRead,BufNewFile *.fish setfiletype sh
-
 autocmd Filetype make setlocal noexpandtab list
 autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
 
+"autocmd BufRead,BufNewFile *.fish setfiletype sh
 autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
