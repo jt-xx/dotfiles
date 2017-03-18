@@ -21,6 +21,11 @@ function install_to_parent_dir() {
     for dir in $(find $src_dir -type d); do
         dir="$(echo $dir | cut -d '/' -f2-)"
         target="../$dir"
+        # if $dir is a dead symlink then first move it
+        if [ ! -e "$target" -a -L "$target" ]; then
+            $MKDIR -p "$DOTFILES_COW_DIR/$(dirname "$dir")"
+            $MV -fv "$target" "$DOTFILES_COW_DIR/$dir"
+        fi
         $MKDIR -p $target
     done;
     for file in $(find $src_dir -type f); do
@@ -34,9 +39,8 @@ function install_to_parent_dir() {
         fi
 
         if [ -L "$target" ]; then
-            echo "$target is already a symlink, skipping"
+            echo "Skipped $target, is already a symlink."
         else
-            $MKDIR -p $(dirname $target)
             $LN -sfv $src $target
         fi
     done;
