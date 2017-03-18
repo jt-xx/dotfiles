@@ -1,38 +1,37 @@
 [user]
-    name = Julien Thewys
-    email = julien.thewys@gmail.com
-
+	name = Julien Thewys
+	email = julien.thewys@gmail.com
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+	diff = auto
+	status = auto
+	branch = auto
 
 [alias]
-    ci = commit
-    di = diff
-    st = status
-    tip = log -1
-    top = log -10 --format='%h: %an %ai %s'
-    lol = log --oneline --decorate --graph -n 15
+	ci = commit
+	di = diff
+	st = status
+	tip = log -1
+	top = log -10 --format='%h: %an %ai %s'
+	lol = log --oneline --decorate --graph -n 15
 
-    ; Clone the project you want to watch, and type git ribbon to initialize the ribbon marker.
-    ; Now whenever you fetch or pull, use git catchup to read up on the latest changes in the origin/master branch.
-    ; After you are done reading, update the ribbon marker with git ribbon.
-    ribbon = tag --force _ribbon origin/master
-    catchup = log --patch --reverse --topo-order _ribbon..origin/master
+	; Clone the project you want to watch, and type git ribbon to initialize the ribbon marker.
+	; Now whenever you fetch or pull, use git catchup to read up on the latest changes in the origin/master branch.
+	; After you are done reading, update the ribbon marker with git ribbon.
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master
 
 [push]
-    default = matching
+	default = matching
 
 #[http]
-#   proxy = thewyju:abcd1234@147.67.138.13:8012
+#	proxy = thewyju:abcd1234@147.67.138.13:8012
 #	proxy = socks5://127.0.0.1:1080
 #[https]
 #	proxy = socks5://127.0.0.1:1080
 #[core]
 #	gitproxy = gitproxy.sh
 [url "https://github.com/"]
-    insteadOf = git://github.com/
+	insteadOf = git://github.com/
 [core]
 	pager = less -x1,5
