@@ -23,8 +23,8 @@ Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'dag/vim-fish'
 Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
-"Plug 'pangloss/vim-javascript'
-"Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
@@ -34,7 +34,7 @@ Plug 'kopischke/vim-stay'
 "Plug 'vim-scripts/indentpython.vim'
 "Plug 'nvie/vim-flake8'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
