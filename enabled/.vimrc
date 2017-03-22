@@ -96,6 +96,11 @@ filetype plugin indent on
 autocmd FocusLost * :wa
 autocmd Filetype make setlocal noexpandtab list
 autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
+autocmd Filetype python nnoremap <buffer> <leader>bp :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
+function! PythonRemoveAllBreakpoints()
+    execute "g/^.*import pdb; pdb.set_trace\(\).*/d"
+endfunction
+autocmd Filetype python nnoremap <buffer> <leader>dbp :call PythonRemoveAllBreakpoints()<CR>
 
 "autocmd BufRead,BufNewFile *.fish setfiletype sh
 autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
