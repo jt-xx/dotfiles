@@ -5,6 +5,7 @@ import os
 import math
 import re
 import random
+import json as json
 try:
     import yaml
 except ImportError:
@@ -33,3 +34,4 @@ import datetime
 now = datetime.datetime.now()
 today = datetime.date.today()
 
+import itertools as it
