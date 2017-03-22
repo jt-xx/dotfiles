@@ -78,6 +78,7 @@ set modelines=1                        " macos workaround
 set backupdir=~/.vim/tmp/backups//
 set directory=~/.vim/tmp/swaps//
 set viewdir=~/.vim/tmp/views//
+set undofile
 set undodir=~/.vim/tmp/undo//
 set listchars=tab:»·,trail:·
 set background=dark
@@ -102,6 +103,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 " Filetype and autocommand {{{
 filetype plugin indent on
 
+autocmd FocusLost * :wa
 autocmd Filetype make setlocal noexpandtab list
 autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
 
