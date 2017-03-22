@@ -21,6 +21,7 @@ set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 Plug 'dag/vim-fish'
 Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
@@ -31,9 +32,6 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 Plug 'kopischke/vim-stay'
 
-" TODO find a more complete/modern one
-"Plug 'vim-scripts/indentpython.vim'
-"Plug 'nvie/vim-flake8'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
 " The Silver Searcher
@@ -54,9 +52,6 @@ if executable('ag')
   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
-" Lint
-Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
-
 Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {
@@ -72,7 +67,6 @@ let g:lightline = {
 
 call plug#end()
 " }}}
-
 " Global config not plugin dependent {{{
 set modelines=1                        " macos workaround
 set backupdir=~/.vim/tmp/backups//
@@ -83,8 +77,7 @@ set undodir=~/.vim/tmp/undo//
 set listchars=tab:»·,trail:·
 set background=dark
 set number
-set wildignore+=*.sw?
-set wildignore+=*.pyc
+set wildignore+=*.sw?,*.pyc
 set hlsearch
 set joinspaces
 
@@ -92,14 +85,11 @@ set mouse=a
 
 hi LineNr ctermfg=darkgrey
 """ }}}
-
 " Leader Shortcuts {{{
 let mapleader=","
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 " }}}
-
 " Filetype and autocommand {{{
 filetype plugin indent on
 
@@ -112,7 +102,6 @@ autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " }}}
-
 " python virtualenv support {{{
 py << EOF
 import os
