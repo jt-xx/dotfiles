@@ -20,6 +20,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
+let g:syntastic_python_flake8_args='--ignore=E501'
+
 Plug 'dag/vim-fish'
 Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
@@ -36,6 +38,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
+  " hack to ignore translation files and external js libs in Odoo projects
+  autocmd Filetype python,xml set grepprg=ag\ --nogroup\ --nocolor\ --ignore-dir='i18n*'\ --ignore-dir='static/lib'\ --ignore-dir='fonts'\ --ignore-dir='*.min.*'\ --ignore-dir='*.css.map'\ --ignore-dir='data'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
