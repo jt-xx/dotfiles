@@ -2,17 +2,19 @@ set nocompatible
 
 " VimPlug {{{
 call plug#begin()
-
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
-
 Plug 'tpope/vim-vinegar'
 "let g:netrw_banner = 0
 let g:netrw_liststyle = 3
 "let g:netrw_browse_split = 4
 let g:netrw_altv = 1
 "let g:netrw_winsize = 25
+Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
+Plug 'kopischke/vim-stay'
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'tpope/vim-fugitive'
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -28,11 +30,6 @@ Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
-Plug 'tmhedberg/SimpylFold'
-Plug 'Konfekt/FastFold'
-Plug 'kopischke/vim-stay'
-
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
 " The Silver Searcher
 if executable('ag')
@@ -66,7 +63,6 @@ let g:lightline = {
       \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
       \ },
       \ }
-
 call plug#end()
 " }}}
 " Global config not plugin dependent {{{
@@ -86,12 +82,11 @@ set mouse=a
 
 hi LineNr ctermfg=darkgrey
 """ }}}
-" Leader Shortcuts {{{
+" Leader, Filetype and autocommand {{{
 let mapleader=","
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-" }}}
-" Filetype and autocommand {{{
+
 filetype plugin indent on
 
 autocmd FocusLost * :wa
@@ -103,7 +98,6 @@ function! PythonRemoveAllBreakpoints()
 endfunction
 autocmd Filetype python nnoremap <buffer> <leader>dbp :call PythonRemoveAllBreakpoints()<CR>
 
-"autocmd BufRead,BufNewFile *.fish setfiletype sh
 autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
