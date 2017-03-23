@@ -1,5 +1,3 @@
-" vim:foldmethod=marker:foldlevel=0:
-
 set nocompatible
 
 " VimPlug {{{
@@ -68,7 +66,6 @@ let g:lightline = {
 call plug#end()
 " }}}
 " Global config not plugin dependent {{{
-set modelines=1                        " macos workaround
 set backupdir=~/.vim/tmp/backups//
 set directory=~/.vim/tmp/swaps//
 set viewdir=~/.vim/tmp/views//
