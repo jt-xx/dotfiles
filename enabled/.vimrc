@@ -6,11 +6,8 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-"let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-"let g:netrw_winsize = 25
+let g:netrw_liststyle = 1
+
 Plug 'vim-scripts/Gundo'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
@@ -38,7 +35,7 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
   " hack to ignore translation files and external js libs in Odoo projects
-  autocmd Filetype python,xml set grepprg=ag\ --nogroup\ --nocolor\ --ignore-dir='i18n*'\ --ignore-dir='static/lib'\ --ignore-dir='fonts'\ --ignore-dir='*.min.*'\ --ignore-dir='*.css.map'\ --ignore-dir='data'
+  autocmd Filetype python,xml set grepprg=ag\ --nogroup\ --nocolor\ --ignore='i18n*'\ --ignore='static/lib'\ --ignore='data'\ --ignore='fonts'\ --ignore='*.min.*'\ --ignore='*.css.map'
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -49,7 +46,7 @@ if executable('ag')
   " bind K to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-  " bind \ (backward slash) to grep shortcut
+  " bind Ag to grep shortcut
   command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
@@ -67,7 +64,7 @@ let g:lightline = {
       \ }
 call plug#end()
 " }}}
-" Global config not plugin dependent {{{
+" Global config {{{
 set backupdir=~/.vim/tmp/backups//
 set directory=~/.vim/tmp/swaps//
 set viewdir=~/.vim/tmp/views//
@@ -75,13 +72,12 @@ set undofile
 set undodir=~/.vim/tmp/undo//
 set listchars=tab:»·,trail:·
 set background=dark
-set number
 set wildignore+=*.sw?,*.pyc
 set hlsearch
 set joinspaces
-
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set mouse=a
-
+set number
 hi LineNr ctermfg=darkgrey
 """ }}}
 " Leader, Filetype and autocommand {{{
