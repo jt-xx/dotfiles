@@ -12,11 +12,10 @@ except ImportError:
     print("%s: could not import yaml" % __file__)
     pass
 
-# needed for tab completion
-import rlcompleter
 
 # enables tab completion in pdb session
 import pdb
+import rlcompleter
 pdb.Pdb.complete = rlcompleter.Completer(locals()).complete
 
 # enable tab completion in normal session
@@ -25,6 +24,19 @@ if 'libedit' in readline.__doc__: # osx
     readline.parse_and_bind("bind ^I rl_complete")
 else:
     readline.parse_and_bind("tab: complete")
+
+# enable history file
+import atexit
+history_file = os.path.join(os.environ['HOME'], '.python_history')
+try:
+    readline.read_history_file(history_file)
+except IOError:
+    pass
+readline.parse_and_bind("tab: complete")
+readline.set_history_length(1000)
+atexit.register(readline.write_history_file, history_file)
+
+del readline, rlcompleter, atexit, history_file
 
 # shortcuts
 import decimal
