@@ -30,6 +30,7 @@ Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
+Plug 'vim-scripts/nginx.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " The Silver Searcher
 if executable('ag')
