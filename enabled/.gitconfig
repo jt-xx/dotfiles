@@ -9,7 +9,7 @@
 
 [alias]
 	ci = commit
-	di = diff
+	di = diff --color-words
 	st = status
 	tip = log -1
 	top = log -10 --format='%h: %an %ai %s'
