@@ -21,6 +21,10 @@
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --patch --reverse --topo-order _ribbon..origin/master
 
+	please = push --force-with-lease
+	commend = commit --amend --no-edit
+	it = !git init && git commit -m "root" --allow-empty
+
 [push]
 	default = matching
 
