@@ -30,6 +30,7 @@ Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_root_markers = ['.ctrlp']
 " The Silver Searcher
 if executable('ag')
   " Use ag over grep
