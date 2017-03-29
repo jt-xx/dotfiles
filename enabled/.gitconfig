@@ -24,6 +24,8 @@
 	please = push --force-with-lease
 	commend = commit --amend --no-edit
 	it = !git init && git commit -m "root" --allow-empty
+	# list branches sorted by last modified
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
 
 [push]
 	default = matching
