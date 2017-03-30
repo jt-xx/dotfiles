@@ -1,8 +1,8 @@
 function g
-    if type -q ag
-        ag $argv
-    else if type -q ack
-        ack $argv
+    if type -fq ag
+        command ag $argv
+    else if type -fq ack
+        command ack $argv
     else
         switch (count $argv);
             case 0

@@ -15,7 +15,7 @@ end
 set --export PYTHONSTARTUP ~/.pythonrc
 
 # fish prompt
-set fish_prompt_pwd_dir_length 3
+set fish_prompt_pwd_dir_length 0
 
 # aliases
 function l --description "List contents of directory using long format"

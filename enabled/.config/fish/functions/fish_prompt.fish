@@ -23,10 +23,7 @@ function fish_prompt --description "Write out the prompt"
     set -g __fish_git_prompt_color_branch magenta
     set -g __fish_git_prompt_color_dirtystate 06f
     set -g __fish_git_prompt_char_dirtystate "+"
-    #set -g __fish_git_prompt_color_stagedstate yellow
-    #set -g __fish_git_prompt_color_invalidstate red
-    #set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
-    #set -g __fish_git_prompt_color_cleanstate green
+    set -g __fish_git_prompt_color_cleanstate green
 
     echo -en -s "$USER" @ "$__fish_prompt_hostname" ' ' (set_color $color_cwd) (prompt_pwd) (set_color normal) (__fish_git_prompt) "\n$suffix "
 end
