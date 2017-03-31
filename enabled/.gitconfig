@@ -44,7 +44,7 @@
 	# ignore files from diff (useful for Odoo i18n clutter)
 	dix = "!f() { \
 		  if [ \"$#\" -ne 2 ]; then { echo >&2 \"Usage: git dix <ref> <dirname to ignore>\"; exit 1; } fi; \
-		  echo git diff \"$1\" -- . \"':(exclude)*/\"$2\"/*'\"; \
+		  git diff \"$1\" -- . ':(exclude)'\"$2\"'/*'; \
 		}; f"
 
 [push]
