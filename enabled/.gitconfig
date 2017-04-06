@@ -54,6 +54,7 @@
 			fi; \
 			git diff \"$1\" -- . ':(exclude)'\"$ignore\"'/*'; \
 		}; f"
+	co = checkout
 
 [push]
 	default = matching
