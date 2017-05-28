@@ -52,7 +52,7 @@
 			else \
 				ignore=$2; \
 			fi; \
-			git diff \"$1\" -- . ':(exclude)'\"$ignore\"'/*'; \
+			git diff \"$1\" -- ${GIT_PREFIX:-.} ':(exclude)'\"$ignore\"'/*'; \
 		}; f"
 	co = checkout
 
