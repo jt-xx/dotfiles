@@ -19,13 +19,15 @@ function fish_prompt --description "Write out the prompt"
             set suffix '>'
     end
 
+    set -l now (date +"%Y-%m-%d %H:%M:%S")
+
     set -g __fish_git_prompt_show_informative_status 1
     set -g __fish_git_prompt_color_branch magenta
     set -g __fish_git_prompt_color_dirtystate 06f
     set -g __fish_git_prompt_char_dirtystate "+"
     set -g __fish_git_prompt_color_cleanstate green
 
-    echo -en -s "$USER" @ "$__fish_prompt_hostname" ' ' (set_color $color_cwd) (prompt_pwd) (set_color normal) (__fish_git_prompt) "\n$suffix "
+    echo -en -s "$USER" @ "$__fish_prompt_hostname" ' ' (set_color $color_cwd) (prompt_pwd) (set_color normal) (__fish_git_prompt) (set_color blue) " $now" (set_color normal) "\n$suffix "
 end
 
 #set -g __fish_git_prompt_show_informative_status 1
