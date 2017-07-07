@@ -39,6 +39,9 @@
 		--base-path=. \
 		--export-all \
 		./.git;
+	stsh = stash --keep-index
+	staash = stash --include-untracked
+	staaash = stash --all
 
 	# ignore files from diff
 	dix = "!f() { \
