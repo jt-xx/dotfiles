@@ -2,7 +2,6 @@ set PATH /usr/local/sbin $PATH ~/bin
 
 switch (uname)
 case Darwin
-    set PATH /Applications/Postgres.app/Contents/Versions/9.4/bin $PATH
     set PATH /usr/local/opt/findutils/libexec/gnubin /usr/local/opt/coreutils/libexec/gnubin $PATH
 
     # fix warning on macOS

@@ -137,7 +137,6 @@ export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
 
 PATH="/usr/local/sbin:${PATH}:~/bin"
 if [[ $(uname) == 'Darwin' ]]; then
-    PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:${PATH}"
     PATH="/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 fi
 
