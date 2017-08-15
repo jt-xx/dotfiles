@@ -21,6 +21,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 let g:syntastic_python_flake8_args='--ignore=E501'
+let g:syntastic_javascript_checkers=['jshint']
 
 Plug 'dag/vim-fish'
 Plug 'chrisbra/csv.vim'
