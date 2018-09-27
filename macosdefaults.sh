@@ -23,6 +23,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
+# Click in the scroll bar: Jump to the spot that's clicked
+defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
+
 #
 # Safari / WebKit
 #
