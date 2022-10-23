@@ -78,3 +78,7 @@
 	pager = less -x1,5
 	editor = vim
 	excludesfile = ~/.gitignore_global
+[credential]
+	helper = cache
+[pull]
+	rebase = true
