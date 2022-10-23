@@ -26,6 +26,9 @@ sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Vol
 # Click in the scroll bar: Jump to the spot that's clicked
 defaults write NSGlobalDomain AppleScrollerPagingBehavior -int 1
 
+# Disable Game Center
+sudo launchctl unload -w /System/Library/LaunchAgents/com.apple.gamed.plist
+
 #
 # Safari / WebKit
 #
@@ -41,6 +44,9 @@ defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+# Debug Menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
 # Enable “Do Not Track”
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
