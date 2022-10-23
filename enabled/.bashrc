@@ -7,18 +7,20 @@
 
 # don't put duplicate lines in the history. See bash(1) for more options
 # don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
+#export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}erasedups
 # ... or force ignoredups and ignorespace
 #export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 
 # Ignore some controlling instructions
 export HISTIGNORE="[ ]*:&:bg:fg:exit"
+export MYSQL_HISTIGNORE=" *"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-export HISTSIZE=3000
+export HISTSIZE=30000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -53,14 +55,14 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-#export USER_COLOR=`expr $RANDOM % 8 + 1`
-#export PWD_COLOR=`expr $RANDOM % 8 + 1`
-#export BRANCH_COLOR=`expr $RANDOM % 8 + 1`
-#export NUM_COLOR=`expr $RANDOM % 8 + 1`
-export USER_COLOR=`expr $RANDOM % 7 + 0`
-export PWD_COLOR=`expr $RANDOM % 7 + 0`
-export BRANCH_COLOR=`expr $RANDOM % 7 + 0`
-export NUM_COLOR=`expr $RANDOM % 7 + 0`
+if [[ $(uname) == 'Darwin' ]]; then
+    BREW_PREFIX=$(brew --prefix)
+fi
+
+export USER_COLOR=`expr $RANDOM % 7 + 1`
+export PWD_COLOR=`expr $RANDOM % 7 + 1`
+export BRANCH_COLOR=`expr $RANDOM % 7 + 1`
+export NUM_COLOR=`expr $RANDOM % 7 + 1`
 
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
@@ -79,6 +81,13 @@ xterm*|rxvt*)
 *)
     ;;
 esac
+
+if [[ $(uname) == 'Darwin' ]]; then
+    # using $(brew --prefix coreutils) is too slow (500 msec)
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:${PATH}"
+    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+fi
+#PATH=~/.composer/vendor/bin:$PATH
 
 # Functions definitions.
 # You may want to put all your additions into a separate file like
@@ -104,8 +113,8 @@ case $- in
 *i*)
     if [ -f /etc/bash_completion ]; then
         . /etc/bash_completion
-    elif [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
+    elif [ -f $BREW_PREFIX/etc/bash_completion ]; then
+        . $BREW_PREFIX/etc/bash_completion
     fi;;
 esac
 
@@ -135,22 +144,9 @@ export LC_TIME=en_DK.utf8 # uses iso date format
 export LC_CTYPE=en_US.UTF-8 # fix perl warning on OSX
 export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
 
-PATH="/usr/local/sbin:${PATH}:~/bin"
-if [[ $(uname) == 'Darwin' ]]; then
-    PATH="/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-fi
-
 export EDITOR='vim'
 export PSQL_EDITOR='vim -c "set ft=sql"'
 #export http_proxy="http://thewyju:abcd1234@147.67.138.13:8012"
-
-# fasd
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
 
 # docker
 #eval $(docker-machine env dockerbox)
@@ -161,3 +157,24 @@ unset fasd_cache
 #export ODOO_URL=$(docker-machine ip dockerbox)":"$(docker-compose port odoo 8069 | cut -f 2 -d ':')
 ##alias bro='chromium-browser --incognito ${ODOO_URL}'
 #alias bro='open "/Applications/Google Chrome.app" -n --args --incognito ${ODOO_URL}'
+
+os_notification() {
+    if [[ $(uname) == 'Darwin' ]]; then
+        cmd="display notification \"$2\" with title \"$1\" subtitle \"$3\""
+        echo "$cmd"
+        osascript -e "$cmd"
+    else
+        notify-send "$1" "$3 $2"
+    fi
+}
+
+long_run() {
+    tic=$(date +%s)
+    "$@"
+    elapsed=$(($(date +%s) - tic))
+    if [[ $elapsed -ge 15 ]]; then
+        os_notification "Long running command" "took $elapsed seconds to finish" "$(echo $@)"
+    fi
+}
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
