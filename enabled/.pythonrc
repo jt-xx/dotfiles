@@ -9,7 +9,7 @@ import json as json
 try:
     import yaml
 except ImportError:
-    print("%s: could not import yaml -> sudo pip install PyYAML" % __file__)
+    print("%s: could not import yaml -> pip3 install PyYAML" % __file__)
     pass
 
 
