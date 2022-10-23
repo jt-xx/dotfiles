@@ -6,6 +6,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+let g:netrw_dynamic_maxfilenamelen = 32
 let g:netrw_liststyle = 1
 
 Plug 'vim-scripts/Gundo'
@@ -17,16 +18,22 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-fugitive'
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 Plug 'airblade/vim-gitgutter'
+Plug 'jszakmeister/vim-togglecursor'
+Plug 'NLKNguyen/papercolor-theme'
 
+"Plug 'zxqfl/tabnine-vim'
+""Plug 'Valloric/YouCompleteMe'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_javascript_checkers=['jshint']
 
-Plug 'dag/vim-fish'
+"Plug 'dag/vim-fish'
 Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
@@ -56,7 +63,7 @@ endif
 Plug 'itchyny/lightline.vim'
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
@@ -80,8 +87,17 @@ set hlsearch
 set joinspaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set mouse=a
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
 set number
+if !$TERM_PROGRAM =~ "Apple_Terminal"
+    set termguicolors
+endif
 hi LineNr ctermfg=darkgrey
+colorscheme PaperColor
 """ }}}
 " Leader, Filetype and autocommand {{{
 let mapleader=","
@@ -92,7 +108,7 @@ filetype plugin indent on
 
 autocmd FocusLost * :wa
 autocmd Filetype make setlocal noexpandtab list
-autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix
+autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent "fileformat=unix
 autocmd Filetype python nnoremap <buffer> <leader>bp :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 function! PythonRemoveAllBreakpoints()
     execute "g/^.*import pdb; pdb.set_trace\(\).*/d"
@@ -104,12 +120,12 @@ autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " }}}
 " python virtualenv support {{{
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+"py << EOF
+"import os
+"import sys
+"if 'VIRTUAL_ENV' in os.environ:
+"  project_base_dir = os.environ['VIRTUAL_ENV']
+"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"  execfile(activate_this, dict(__file__=activate_this))
+"EOF
 " }}}
