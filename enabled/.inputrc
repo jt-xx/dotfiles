@@ -66,8 +66,10 @@ set bell-style none
 "\e[6~": history-search-forward
 "\e[7~": beginning-of-line
 "\e[8~": end-of-line
-"\e[A": previous-history
-"\e[B": next-history
+#"\e[A": previous-history
+#"\e[B": next-history
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 "\e[H": beginning-of-line
 "\e\C-h": backward-kill-word
 "\e\e[3~": kill-word
