@@ -5,8 +5,10 @@
 #[ -f ~/.dir_colors ] && eval `dircolors -b ~/.dir_colors `
 #if [ -x /usr/bin/dircolors ]; then
 
-if type -P dircolors &>/dev/null; then
-    eval "`dircolors -b`"
+DIRCOLORS=$(type -P dircolors gdircolors | head -n 1)
+
+if type -P gdircolors &>/dev/null; then
+    eval "`gdircolors -b`"
     #if gnu ls
     alias ls='ls --color=auto'
     alias l='ls -AlF --color=auto'
