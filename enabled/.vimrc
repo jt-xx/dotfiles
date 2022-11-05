@@ -109,6 +109,8 @@ filetype plugin indent on
 autocmd FocusLost * :wa
 autocmd Filetype make setlocal noexpandtab list
 autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent "fileformat=unix
+" commit: https://stackoverflow.com/questions/39553825/vim-double-indents-python-files/62348570#62348570
+let g:pyindent_open_paren=shiftwidth()
 autocmd Filetype python nnoremap <buffer> <leader>bp :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 function! PythonRemoveAllBreakpoints()
     execute "g/^.*import pdb; pdb.set_trace\(\).*/d"
@@ -118,14 +120,4 @@ autocmd Filetype python nnoremap <buffer> <leader>dbp :call PythonRemoveAllBreak
 autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
-" }}}
-" python virtualenv support {{{
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"  execfile(activate_this, dict(__file__=activate_this))
-"EOF
 " }}}
