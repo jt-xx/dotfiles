@@ -1,3 +1,4 @@
+echo "in .bashrc"
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -82,13 +83,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-if [[ $(uname) == 'Darwin' ]]; then
-    # using $(brew --prefix coreutils) is too slow (500 msec)
-    PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/bin:${PATH}"
-    MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-fi
-#PATH=~/.composer/vendor/bin:$PATH
-
 # Functions definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_functions, instead of adding them here directly.
@@ -105,18 +99,6 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-# If this shell is interactive, enable programmable completion
-# features (you don't need to enable this, if it's already enabled
-# in /etc/bash.bashrc and /etc/profile).
-case $- in
-*i*)
-    if [ -f /etc/bash_completion ]; then
-        . /etc/bash_completion
-    elif [ -f $BREW_PREFIX/etc/bash_completion ]; then
-        . $BREW_PREFIX/etc/bash_completion
-    fi;;
-esac
 
 # Whenever displaying the prompt, write the previous line to disk
 # export PROMPT_COMMAND="history -a"
@@ -140,9 +122,9 @@ export PYTHONSTARTUP=~/.pythonrc
 
 alias mc='command mc -c --printwd=/tmp/mc-$USER/dir; cd "`cat /tmp/mc-$USER/dir`"; rm -f "/tmp/mc-$USER/dir"; :'
 
-export LC_TIME=en_DK.utf8 # uses iso date format
-export LC_CTYPE=en_US.UTF-8 # fix perl warning on OSX
-export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
+#export LC_TIME=en_DK.utf8 # uses iso date format
+#export LC_CTYPE=en_US.UTF-8 # fix perl warning on OSX
+#export LC_ALL=en_US.UTF-8 # fix perl warning on OSX
 
 export EDITOR='vim'
 export PSQL_EDITOR='vim -c "set ft=sql"'
