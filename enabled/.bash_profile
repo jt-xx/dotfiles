@@ -26,3 +26,13 @@ if [ -r ~/.profile ]; then . ~/.profile; fi
 # described on http://brettterpstra.com/2009/11/17/my-new-favorite-bash-prompt/
 
 # also https://superuser.com/questions/703415/why-do-people-source-bash-profile-from-bashrc-instead-of-the-other-way-round
+
+#export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+source $NVM_DIR/nvm.sh
+#[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && \. "/usr/local/opt/nvm/etc/bash_completion"
+
+# Created by `pipx` on 2024-03-18 09:27:16
+export PATH="$PATH:/Users/julien/.local/bin"
