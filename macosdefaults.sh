@@ -21,6 +21,7 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 
 # Disable Spotlight indexing for any volume that gets mounted and has not yet been indexed before.
 # Use `sudo mdutil -i off "/Volumes/foo"` to stop indexing any volume.
+# Also touch /Volumes/your_external_drive/.metadata_never_index
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 
 # Click in the scroll bar: Jump to the spot that's clicked
