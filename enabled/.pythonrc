@@ -33,7 +33,7 @@ try:
 except IOError:
     pass
 readline.parse_and_bind("tab: complete")
-readline.set_history_length(1000)
+readline.set_history_length(10000)
 atexit.register(readline.write_history_file, history_file)
 
 del readline, rlcompleter, atexit, history_file
@@ -47,3 +47,4 @@ now = datetime.datetime.now()
 today = datetime.date.today()
 
 import itertools as it
+from collections import defaultdict as DD
