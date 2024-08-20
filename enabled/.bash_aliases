@@ -38,7 +38,8 @@ function u() {
 
 alias cp='cp -i'
 alias mv='mv -i'
-alias mc='command mc -c --printwd=/tmp/mc-$USER/dir; cd "`cat /tmp/mc-$USER/dir`"; rm -f "/tmp/mc-$USER/dir"; :'
+#alias mc='command mc -c --printwd=/tmp/mc-$USER/dir; cd "`cat /tmp/mc-$USER/dir`"; rm -f "/tmp/mc-$USER/dir"; :'
+alias mc='command mc --nosubshell'
 alias rm='rm -i'
 alias v='vim $(find . | fzf)'
 alias psg='ps aux | grep'
@@ -46,6 +47,11 @@ alias psg='ps aux | grep'
 alias f='find . -iname'
 #alias g='ack --nogroup --column --ignore-dir=i18n'
 #alias g='ag --ignore *.js --ignore *.map --ignore-dir=i18n --ignore-dir=translations'
+alias g='rg -g "*py" -g \!tests'
+# ripgrep, no test files
+alias rgnt="rg --iglob '!**/{test,tests}/*' --iglob '!**/*[._-]{test,spec}[._-]*'"
+# ripgrep, only in test files
+alias rgt="rg --iglob '**/{test,tests}/*' --iglob '**/*[._-]{test,spec}[._-]*'"
 
 function g() {
     ag $* --ignore=*.js --ignore=*.map --ignore-dir=i18n --ignore-dir=translations
@@ -60,4 +66,3 @@ alias csv='column -s "," -t < '
 #alias ll='ls -l'
 #alias la='ls -A'
 #alias l='ls -CF'
-
