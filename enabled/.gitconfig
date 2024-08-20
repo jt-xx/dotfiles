@@ -13,7 +13,7 @@
 	st = status
 	tip = log -1
 	top = log -10 --format='%h: %an %ai %s'
-	lol = log --oneline --decorate --graph -n 15
+	lol = log --oneline --decorate --graph -n 20
 
 	; Clone the project you want to watch, and type git ribbon to initialize the ribbon marker.
 	; Now whenever you fetch or pull, use git catchup to read up on the latest changes in the origin/master branch.
@@ -61,9 +61,12 @@
 			git diff \"$1\" -- ${GIT_PREFIX:-.} ':(exclude)'\"$ignore\"'/*'; \
 		}; f"
 	co = checkout
+	pushf = push --force-with-lease
 
 [push]
-	default = matching
+	default = simple
+    followTags = true
+    autoSetupRemote = true
 
 #[http]
 #	proxy = thewyju:abcd1234@147.67.138.13:8012
@@ -82,3 +85,9 @@
 	helper = cache
 [pull]
 	rebase = true
+[rebase]
+    autosquash = true
+[rerere]
+	enabled = true
+[gpg]
+	format = ssh
