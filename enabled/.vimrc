@@ -9,11 +9,11 @@ Plug 'tpope/vim-vinegar'
 let g:netrw_dynamic_maxfilenamelen = 32
 let g:netrw_liststyle = 1
 
-Plug 'vim-scripts/Gundo'
+"Plug 'vim-scripts/Gundo'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 Plug 'kopischke/vim-stay'
-Plug 'ntpeters/vim-better-whitespace'
+"Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'tpope/vim-fugitive'
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -23,13 +23,12 @@ Plug 'NLKNguyen/papercolor-theme'
 
 "Plug 'zxqfl/tabnine-vim'
 ""Plug 'Valloric/YouCompleteMe'
-Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+"Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_javascript_checkers=['jshint']
 
-"Plug 'dag/vim-fish'
-Plug 'chrisbra/csv.vim'
+"Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
