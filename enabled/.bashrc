@@ -1,4 +1,4 @@
-echo "in .bashrc"
+#echo "in .bashrc"  # comment echo if rsync protocol mismatch
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -12,6 +12,7 @@ echo "in .bashrc"
 # ... or force ignoredups and ignorespace
 #export HISTCONTROL=ignoreboth
 export HISTCONTROL=ignoreboth:erasedups
+export HISTTIMEFORMAT="%F %T "
 
 # Ignore some controlling instructions
 export HISTIGNORE="[ ]*:&:bg:fg:exit"
@@ -160,3 +161,55 @@ long_run() {
 }
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+eval "$(direnv hook bash)"
+
+function venv {
+    # Check if already in virtualenv
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        echo "Already in a virtualenv"
+        return 1
+    fi
+
+    # Find the first directory in the hierarchy that contains a .venv directory
+    venv_dir=$(pwd)
+    while [[ "$venv_dir" != "/" ]]; do
+        if [[ -d "$venv_dir/.venv" ]]; then
+            break
+        fi
+        venv_dir=$(dirname "$venv_dir")
+    done
+
+    # If a virtualenv was found, activate it and store its path
+    if [[ -d "$venv_dir/.venv" ]]; then
+        source "$venv_dir/.venv/bin/activate"
+        #echo "$venv_dir/.venv" > "$HOME/.venvpath"
+    else
+        echo "No virtualenv found in directory hierarchy"
+        return 1
+    fi
+
+    # Run the specified command within the virtualenv
+    #shift
+    #eval "$@"
+}
+
+# In order for gpg to find gpg-agent, gpg-agent must be running, and there must be an env
+# variable pointing GPG to the gpg-agent socket. This little script, which must be sourced
+# in your shell's init script (ie, .bash_profile, .zshrc, whatever), will either start
+# gpg-agent or set up the GPG_AGENT_INFO variable if it's already running.
+
+# Add the following to your shell init to set up gpg-agent automatically for every shell
+if [ -f ~/.gnupg/.gpg-agent-info ] && [ -n "$(pgrep gpg-agent)" ]; then
+    source ~/.gnupg/.gpg-agent-info
+    export GPG_AGENT_INFO
+else
+    eval $(gpg-agent --daemon --write-env-file ~/.gnupg/.gpg-agent-info)
+fi
+
+gi () {
+	curl -sL https://www.gitignore.io/api/$@ | dos2unix
+}
+
+# Created by `pipx` on 2024-03-18 09:27:16
+export PATH="$PATH:/Users/julien/.local/bin"
