@@ -65,10 +65,11 @@ let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'fugitive', 'readonly', 'filepath', 'modified' ] ]
       \ },
       \ 'component': {
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}',
+      \   'filepath': '%{expand("%:~:.")}'
       \ },
       \ }
 call plug#end()
