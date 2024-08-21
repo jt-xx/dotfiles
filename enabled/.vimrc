@@ -119,7 +119,7 @@ if !$TERM_PROGRAM =~ "Apple_Terminal"
     set termguicolors
 endif
 colorscheme PaperColor
-""" }}}
+" }}}
 " Leader, Filetype and autocommand {{{
 let mapleader=","
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
@@ -138,9 +138,6 @@ function! PythonRemoveAllBreakpoints()
 endfunction
 autocmd Filetype python nnoremap <buffer> <leader>dbp :call PythonRemoveAllBreakpoints()<CR>
 
-autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " }}}
 augroup highlightLineNumber
   autocmd!
