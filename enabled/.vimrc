@@ -9,7 +9,6 @@ Plug 'tpope/vim-vinegar'
 let g:netrw_dynamic_maxfilenamelen = 32
 let g:netrw_liststyle = 3
 
-"Plug 'vim-scripts/Gundo'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 Plug 'kopischke/vim-stay'
@@ -20,14 +19,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'jszakmeister/vim-togglecursor'
 Plug 'NLKNguyen/papercolor-theme'
 
-"Plug 'zxqfl/tabnine-vim'
-""Plug 'Valloric/YouCompleteMe'
 "Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'dense-analysis/ale'
 
-"Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
