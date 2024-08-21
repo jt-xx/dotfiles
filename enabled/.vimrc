@@ -13,7 +13,6 @@ let g:netrw_liststyle = 3
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
 Plug 'kopischke/vim-stay'
-"Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'tpope/vim-fugitive'
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
@@ -26,9 +25,7 @@ Plug 'NLKNguyen/papercolor-theme'
 "Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
-let g:syntastic_python_flake8_args='--ignore=E501'
-let g:syntastic_javascript_checkers=['jshint']
+Plug 'dense-analysis/ale'
 
 "Plug 'chrisbra/csv.vim'
 Plug 'groenewege/vim-less'
@@ -74,6 +71,30 @@ let g:lightline = {
       \ }
 call plug#end()
 " }}}
+
+" ALE {{{
+let g:ale_completion_enabled = 1
+let g:ale_linters = {
+\   'javascript': ['prettier'],
+\   'python': ['flake8'],
+\}
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier'],
+\   'json': ['prettier'],
+\   'markdown': ['prettier'],
+\   'python': ['black'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_python_flake8_options = '--ignore=B011 --max-line-length=120'
+let g:ale_yaml_yamllint_options = '-d "{extends: relaxed, rules: {line-length: disable}}"'
+" }}}
+
 " Global config {{{
 set backupdir=~/.vim/tmp/backups//
 set directory=~/.vim/tmp/swaps//
