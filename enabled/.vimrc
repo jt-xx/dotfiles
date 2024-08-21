@@ -85,6 +85,7 @@ set wildignore+=*.sw?,*.pyc
 set hlsearch
 set joinspaces
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set clipboard=unnamed
 set mouse=a
 if has("mouse_sgr")
     set ttymouse=sgr
