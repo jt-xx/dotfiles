@@ -118,7 +118,6 @@ set number
 if !$TERM_PROGRAM =~ "Apple_Terminal"
     set termguicolors
 endif
-hi LineNr ctermfg=darkgrey
 colorscheme PaperColor
 """ }}}
 " Leader, Filetype and autocommand {{{
@@ -143,3 +142,8 @@ autocmd BufNewFile,BufRead *.css setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.html setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufNewFile,BufRead *.js setlocal tabstop=2 softtabstop=2 shiftwidth=2
 " }}}
+augroup highlightLineNumber
+  autocmd!
+  autocmd ColorScheme * highlight LineNr ctermfg=blue ctermbg=none
+  autocmd ColorScheme * highlight CursorLineNr ctermfg=yellow ctermbg=none
+augroup END
