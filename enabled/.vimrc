@@ -7,7 +7,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 let g:netrw_dynamic_maxfilenamelen = 32
-let g:netrw_liststyle = 1
+let g:netrw_liststyle = 3
 
 "Plug 'vim-scripts/Gundo'
 Plug 'tmhedberg/SimpylFold'
