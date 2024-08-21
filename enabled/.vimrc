@@ -132,7 +132,7 @@ autocmd Filetype make setlocal noexpandtab list
 autocmd Filetype bash,python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent "fileformat=unix
 " commit: https://stackoverflow.com/questions/39553825/vim-double-indents-python-files/62348570#62348570
 let g:pyindent_open_paren=shiftwidth()
-autocmd Filetype python nnoremap <buffer> <leader>bp :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
+autocmd Filetype python nnoremap <buffer> <leader>bp :normal oimport pdb; pdb.set_trace()  # fmt: skip<Esc>
 function! PythonRemoveAllBreakpoints()
     execute "g/^.*import pdb; pdb.set_trace\(\).*/d"
 endfunction
