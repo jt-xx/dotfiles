@@ -37,6 +37,9 @@ Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
+Plug 'zchee/vim-flatbuffers'
+Plug 'hashivim/vim-terraform'
+Plug 'towolf/vim-helm'
 Plug 'vim-scripts/nginx.vim'
 
 if executable('rg')
