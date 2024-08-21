@@ -24,6 +24,8 @@ Plug 'NLKNguyen/papercolor-theme'
 "Plug 'zxqfl/tabnine-vim'
 ""Plug 'Valloric/YouCompleteMe'
 "Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/syntastic', { 'on': 'SyntasticCheck' }
 let g:syntastic_python_flake8_args='--ignore=E501'
 let g:syntastic_javascript_checkers=['jshint']
@@ -36,27 +38,22 @@ Plug 'posva/vim-vue'
 Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
 Plug 'vim-scripts/nginx.vim'
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_root_markers = ['.ctrlp']
-" The Silver Searcher
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+
+if executable('rg')
+  " Use rg over grep
+  set grepprg=rg\ vimgrep\ --smart-case\ --follow
+
   " hack to ignore translation files and external js libs in Odoo projects
-  autocmd Filetype python,xml set grepprg=ag\ --nogroup\ --nocolor\ --ignore='i18n*'\ --ignore='static/lib'\ --ignore='data'\ --ignore='fonts'\ --ignore='*.min.*'\ --ignore='*.css.map'
+  autocmd Filetype python,xml set grepprg=rg\ --vimgrep\ --glob=!i18n/*\ --glob=!static/lib/*\ --glob=!data/*\ --glob=!fonts/*\ --glob=!*.min.*\ --glob=!*.css.map
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 1
-  let g:ctrlp_clear_cache_on_exit = 0
+  nnoremap <silent> <C-p> :FZF<CR>
+  let g:fzf_files_command = 'iarg --files --no-ignore --hidden --follow --glob "!{dir_to_ignore}/*"'
 
   " bind K to grep word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-  " bind Ag to grep shortcut
-  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  " bind Rg to grep shortcut
+  command! -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
 endif
 
 Plug 'itchyny/lightline.vim'
