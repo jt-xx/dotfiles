@@ -6,20 +6,29 @@ if ! hash fzf 2>/dev/null; then
     exit;
 fi
 
-if [[ "$UNAMESTR" == 'Darwin' ]]; then
-    sd() {
-        if [ -d "$1" ]; then
-            command cd $1
-        else
-            echo "fzf on $(dirname ${1:-.})"
-            DIR=`(echo ".."; \
-                find $(dirname ${1:-.}) -maxdepth 1 -path '*/\.*' -type d; \
-                mdfind -onlyin . "kind:folder") \
-                | fzf -e -q $(basename ${1:-" "}) -1`
-            command cd "$DIR"
-        fi
-    };
-fi
+cd() {
+  if [[ -z "$1" ]]; then
+    # Limit search depth to 2 to avoid performance issues
+    builtin cd "$(find . -maxdepth 2 -type d | fzf)"
+  else
+    builtin cd "$@"
+  fi
+}
+
+#if [[ "$UNAMESTR" == 'Darwin' ]]; then
+#    sd() {
+#        if [ -d "$1" ]; then
+#            command cd $1
+#        else
+#            echo "fzf on $(dirname ${1:-.})"
+#            DIR=`(echo ".."; \
+#                find $(dirname ${1:-.}) -maxdepth 1 -path '*/\.*' -type d; \
+#                mdfind -onlyin . "kind:folder") \
+#                | fzf -e -q $(basename ${1:-" "}) -1`
+#            command cd "$DIR"
+#        fi
+#    };
+#fi
 
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --smart-case --hidden --no-ignore'
