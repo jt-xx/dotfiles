@@ -28,7 +28,7 @@ Plug 'groenewege/vim-less'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'posva/vim-vue'
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
 Plug 'honza/dockerfile.vim'
 Plug 'zchee/vim-flatbuffers'
 Plug 'hashivim/vim-terraform'
@@ -72,14 +72,14 @@ call plug#end()
 let g:ale_completion_enabled = 1
 let g:ale_linters = {
 \   'javascript': ['prettier'],
-\   'python': ['flake8'],
+\   'python': ['ruff'],
 \}
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['prettier'],
 \   'json': ['prettier'],
 \   'markdown': ['prettier'],
-\   'python': ['black'],
+\   'python': ['ruff_format'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '>>'
