@@ -8,10 +8,23 @@ fi
 
 cd() {
   if [[ -z "$1" ]]; then
-    # Limit search depth to 2 to avoid performance issues
-    builtin cd "$(find . -maxdepth 2 -type d | fzf)"
+    # Get recent directories using `dirs`
+    local recent_dirs=$(dirs -v | awk '{print $2}')
+
+    # Use find to get directories up to maxdepth 2 in breadth-first order
+    local find_dirs=$(find . -maxdepth 2 -type d | awk -F/ '{print NF-1, $0}' | sort -n | cut -d' ' -f2-)
+
+    # Combine recent dirs and find results, display in fzf
+    local selection=$(echo -e "$recent_dirs\n$find_dirs" | fzf | awk '{print $1}')
+
+    if [[ -n "$selection" ]]; then
+      # Expand ~ to the full path
+      selection=$(eval echo "$selection")
+      pushd "$selection" > /dev/null
+    fi
   else
-    builtin cd "$@"
+    # Use pushd to change directory and track the stack
+    pushd "$1" > /dev/null
   fi
 }
 
