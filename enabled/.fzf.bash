@@ -6,25 +6,26 @@ if ! hash fzf 2>/dev/null; then
     exit;
 fi
 
-cd() {
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --bash)"
+
+ccd() {
   if [[ -z "$1" ]]; then
-    # Get recent directories using `dirs`
-    local recent_dirs=$(dirs -v | awk '{print $2}')
+    local recent_dirs=$(dirs -p)
 
-    # Use find to get directories up to maxdepth 2 in breadth-first order
-    local find_dirs=$(find . -maxdepth 2 -type d | awk -F/ '{print NF-1, $0}' | sort -n | cut -d' ' -f2-)
+    # breadth-first search (level 1 gets duplicated in level 2 but that's actually nice)
+    local find_dirs=""
+    for depth in 1 2; do
+      find_dirs="$find_dirs$(find . -maxdepth "$depth" -type d)\n"
+    done
 
-    # Combine recent dirs and find results, display in fzf
-    local selection=$(echo -e "$recent_dirs\n$find_dirs" | fzf | awk '{print $1}')
+    local selection=$(echo -e "$recent_dirs\n$find_dirs" | fzf)
 
     if [[ -n "$selection" ]]; then
-      # Expand ~ to the full path
-      selection=$(eval echo "$selection")
-      pushd "$selection" > /dev/null
+      builtin cd "$selection"
     fi
   else
-    # Use pushd to change directory and track the stack
-    pushd "$1" > /dev/null
+    builtin cd "$1"
   fi
 }
 
